@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 10px;">
+    <a class="btn btn-success" href="/user/add/">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+        新建用户
+    </a>
+    <a class="btn btn-success" href="/user/add/">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+        新建用户ModelForm
+    </a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+        用户列表
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>密码</th>
+                <th>年龄</th>
+                <th>余额</th>
+                <th>入职时间</th>
+                <th>性别</th>
+                <th>所属部门</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.name }}</td>
+                <td>{{ u.password }}</td>
+                <td>{{ u.age }}</td>
+                <td>{{ u.account }}</td>
+                <td>{{ u.create_time|date:"Y-m-d" }}</td>
+                <td>{{ u.get_gender_display }}</td>
+                <td>{{ u.depart.title }}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="/user/edit/{{ u.id }}/">编辑</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

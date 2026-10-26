@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<h3>编辑用户</h3>
+<form method="post" style="max-width:400px;">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>姓名</label>
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        <label>密码</label>
+        {{ form.password }}
+    </div>
+    <div class="form-group">
+        <label>年龄</label>
+        {{ form.age }}
+    </div>
+    <div class="form-group">
+        <label>余额</label>
+        {{ form.account }}
+    </div>
+    <div class="form-group">
+        <label>入职时间</label>
+        {{ form.create_time }}
+    </div>
+    <div class="form-group">
+        <label>性别</label>
+        {{ form.gender }}
+    </div>
+    <div class="form-group">
+        <label>部门</label>
+        {{ form.depart }}
+    </div>
+    <button type="submit" class="btn btn-primary">保存</button>
+</form>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
